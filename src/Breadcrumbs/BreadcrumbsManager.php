@@ -2,12 +2,16 @@
 
 namespace ByTIC\Navigation\Breadcrumbs;
 
+use Nip\Utility\Traits\SingletonTrait;
+
 /**
  * Class BreadcrumbsManager
  * @package ByTIC\Navigation\Breadcrumbs
  */
 class BreadcrumbsManager
 {
+    use SingletonTrait;
+
     const DEFAULT_NAMESPACE = "default";
 
     /**
@@ -38,7 +42,7 @@ class BreadcrumbsManager
      */
     protected function checkNewTrail($name)
     {
-        if (isset($this->trails[$name])) {
+        if (!isset($this->trails[$name])) {
             $this->initNewTrail($name);
         }
     }
