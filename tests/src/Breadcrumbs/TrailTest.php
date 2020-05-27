@@ -26,7 +26,7 @@ class TrailTest extends AbstractTest
         $trail->addItem('t2', '#');
 
         $content = $trail->render();
-        $testContent = file_get_contents(TEST_FIXTURE_PATH . '/views-rendered/breadcrumbs/basic.html');
+        $testContent = file_get_contents(TEST_FIXTURE_PATH . '/views-rendered/breadcrumbs/basic-bootstrap4.html');
         self::assertSame($testContent, $content);
     }
 }
