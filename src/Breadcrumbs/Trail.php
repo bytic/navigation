@@ -16,6 +16,8 @@ class Trail
      */
     protected $breadcrumbs;
 
+    protected $renderer = null;
+
     /**
      * Trail constructor.
      */
@@ -42,7 +44,18 @@ class Trail
         if (count($this->breadcrumbs) < 1) {
             return null;
         }
-        return (new BreadcrumbsRenderer($this->breadcrumbs))->render();
+        return $this->renderer()->render();
+    }
+
+    /**
+     * @return BreadcrumbsRenderer
+     */
+    public function renderer()
+    {
+        if ($this->renderer === null) {
+             $this->renderer = new BreadcrumbsRenderer($this->breadcrumbs);
+        }
+        return $this->renderer;
     }
 
     /**
